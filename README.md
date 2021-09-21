@@ -58,28 +58,55 @@ Required arguments:
 Optional arguments:
     -h, --help            
                         Show this help message and exit
-    --epochs EPOCHS
-                        Number of epochs for training. 
-                        [Type: Int, default: 30]
-    --learning_rate LEARNING_RATE         
-                        Learning rate for training model. 
-                        [Type: Float, default: 0.0001]   
+    --savePath 
+                        This parameter is treated as saved path. We will save trained modules to this path after training.
+                        [Type: str]                       
                         
+    --predPath 
+                        This parameter is treated as saved path. We will save trained modules to this path after training.
+                        [Type: str]                                  
+    
     --batch_size BATCH_SIZE
                         Batch size for each training iterations. 
-                        [Type: Int, default: 32]                         
+                        [Type: Int, default: 32]                                                                    
 
     --optimizer OPTIMIZER
                         Optimizer used for training models. 
                         [Type: String, default: "adam", options: "sgd, adam, adagrad"]
+    --seed SEED
+                        used for to determine to the random seed. 
+                        [Type: String, default:0]
+    
+    --poolingFlag
+                        to determine whether adding pooling layer at first layer in model architecture or not
+                        [Type: Bool, default:True]
+                        
+    --ReLUFlag
+                        to determine activation function : Yes=> ReLU() , No=>Tanh()
+                        [Type: Bool, default:True]
+                        
+    --showPosImportance 
+                        if setted True,will show mz range importance in test datato 
+                        [Type: Bool, default:True]
+    --channels
+                        channel size for each convolution network layer.
+                        [Type: Int, default:64]
                         
     --cuda 
                         We use this parameter to determine to use cuda or not. If you want to use gpu, you can type in gpu index, e.g.: 0.
                         If you want to use cpu only, you can type -1.
                         [Type: Int, default: 0 ]  
-                        
-     --savePath 
-                        This parameter is treated as saved path. We will save trained modules to this path after training.
-                        [Type: str]                       
-                        
 
+    --learning_rate LEARNING_RATE         
+                        Learning rate for training model. 
+                        [Type: Float, default: 0.0001]   
+                        
+    --epochs EPOCHS
+                        Number of epochs for training. 
+                        [Type: Int, default: 30]
+                        
+    --splitRatio           
+                        During training process, we need to split Training data into two training and validation parts by splitRatio to determine parameters.
+                        After deciding parameters, we will train the whole training data again.
+                        [Type: float, default: 0.2]
+                        
