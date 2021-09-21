@@ -4,11 +4,13 @@ In this project, we develop the deep learning algorithm to classify bacteria wit
 ## workflow
 We divde into three sections.
 
-### preprocessing:
-preprocess.py will process MS data as deep learning model input.
-### training:
-In this section, we will train the model from our code using preprocessed input in previous step.And users can modify parameters to change the architeture of network based on their needs.(ex:poolingFlag,ReLUFlag,channels,batch_size, etc.)
-### model interpretation:
+### preprocessing: (preprocess.py)
+MS data is processed and it will be transformed as deep learning model input after preprocessing.
+
+### training: (dataset.py ,)
+In this section, we will train the model from our code using preprocessed input in previous step. Users can modify parameters to change the architeture of network based on demands. (ex:poolingFlag,ReLUFlag,channels,batch_size, etc.)
+
+### model interpretation: (scorecam.py)
 We will
 
 
