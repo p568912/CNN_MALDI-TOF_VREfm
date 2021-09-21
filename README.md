@@ -3,7 +3,7 @@ In this project, we develop the deep learning algorithm to classify bacteria wit
 
 ## installation
 Our python enviroment will be >=3.6. Installed Packages are listed in "requirements.txt". You can install relevant package by `
-``bash 
+```bash 
 pip3 install -r requirements.txt.
 ```
 ## workflow
