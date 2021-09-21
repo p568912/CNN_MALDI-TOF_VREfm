@@ -43,20 +43,43 @@ usage: trainBatDropout.py  [-h help]
                   [--splitRatio SPLIT_RATIO]
                   
 Required arguments:
-  --trainData
+    --trainData
                         training Data path 
                         [Type: String]  
-  --trainLabel
+    --trainLabel
                         training label path 
                         [Type: String]
-  --testData
+    --testData
                         testing Data path 
                         [Type: String]  
-  --trainLabel
+    --testLabel
                         testing label path 
                         [Type: String]  
 Optional arguments:
-  -h, --help            
+    -h, --help            
                         Show this help message and exit
+    --epochs EPOCHS
+                        Number of epochs for training. 
+                        [Type: Int, default: 30]
+    --learning_rate LEARNING_RATE         
+                        Learning rate for training model. 
+                        [Type: Float, default: 0.0001]   
+                        
+    --batch_size BATCH_SIZE
+                        Batch size for each training iterations. 
+                        [Type: Int, default: 32]                         
+
+    --optimizer OPTIMIZER
+                        Optimizer used for training models. 
+                        [Type: String, default: "adam", options: "sgd, adam, adagrad"]
+                        
+    --cuda 
+                        We use this parameter to determine to use cuda or not. If you want to use gpu, you can type in gpu index, e.g.: 0.
+                        If you want to use cpu only, you can type -1.
+                        [Type: Int, default: 0 ]  
+                        
+     --savePath 
+                        This parameter is treated as saved path. We will save trained modules to this path after training.
+                        [Type: str]                       
                         
 
