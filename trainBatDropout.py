@@ -149,7 +149,7 @@ def train(model, train_loader, optimizer, criterion, epoch):
     # print("Epoch %d\nTraining acc: %.2f"%(epoch, 100. * correct/len(train_loader.dataset))+"%")
     print("Train AUC score: {:.4f}".format(roc_auc_score(np.array(all_label), np.array(all_pred))))
 
-def test(model, test_loader, criterion,predPath, data_type='Test', arch=None):
+def test(model, test_loader, criterion,predPath=None, data_type='Test', arch=None):
     model.eval()
     correct = 0
     tp, tn, fp, fn = 0, 0, 0, 0
@@ -193,7 +193,8 @@ def test(model, test_loader, criterion,predPath, data_type='Test', arch=None):
         
 
         pred_res = np.concatenate((np.array(all_label), np.array(all_pred)),axis=0).reshape(2,-1).T
-        np.savetxt(predPath, pred_res, delimiter=",",fmt='%.6f')
+        if predPath:
+            np.savetxt(predPath, pred_res, delimiter=",",fmt='%.6f')
 
     
     print("{} AUC score: {:.4f}".format(data_type, roc_auc_score(np.array(all_label), np.array(all_pred))))
@@ -204,24 +205,26 @@ def test(model, test_loader, criterion,predPath, data_type='Test', arch=None):
 def main():
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--seed',help='seed number',type=int,default=0)
-    parser.add_argument('--poolingFlag',default=True,type=str2bool)
-    parser.add_argument('--ReLUFlag',default=True,type=str2bool)
-    parser.add_argument('--showPosImportance',default=True,type=str2bool)
-    parser.add_argument('--channels',default=64,type=int)
-    parser.add_argument('--savePath', required=True)
-    parser.add_argument('--predPath', required=True)
 
-    parser.add_argument('--trainData', default='/volume/tsungting/MALDI-TOF/MALDI-TOF/20210414/Linkou_EF_Data_round_off_dim_18000.npy', type=str)
-    parser.add_argument('--trainLabel', default='/volume/tsungting/MALDI-TOF/MALDI-TOF/20210414/Linkou_EF_Data_labels.csv', type=str)
-    parser.add_argument('--testData', default='/volume/tsungting/MALDI-TOF/MALDI-TOF/20210414/Kaohsiung_EF_Data_round_off_dim_18000.npy', type=str)
-    parser.add_argument('--testLabel', default='/volume/tsungting/MALDI-TOF/MALDI-TOF/20210414/Kaohsiung_EF_Data_labels.csv', type=str)
-    parser.add_argument('--cuda', type=int, default=0)
-    parser.add_argument('--optimizer', type=str, default='adam', choices=['sgd', 'adam', 'adagrad'])
-    parser.add_argument('--epochs', type=int, default=30, help='num of training epochs')
+    parser.add_argument('--trainData', default='/volume/tsungting/MALDI-TOF/MALDI-TOF/20210414/Linkou_EF_Data_round_off_dim_18000.npy', type=str,help="training data path")
+    parser.add_argument('--trainLabel', default='/volume/tsungting/MALDI-TOF/MALDI-TOF/20210414/Linkou_EF_Data_labels.csv', type=str,help="training label path")
+    parser.add_argument('--testData', default='/volume/tsungting/MALDI-TOF/MALDI-TOF/20210414/Kaohsiung_EF_Data_round_off_dim_18000.npy', type=str,help="testing data path")
+    parser.add_argument('--testLabel', default='/volume/tsungting/MALDI-TOF/MALDI-TOF/20210414/Kaohsiung_EF_Data_labels.csv', type=str,help="testing label path")
+
+    parser.add_argument('--savePath', help='Model path to save')
+    parser.add_argument('--predPath', help="prediction result in test data to save")
     parser.add_argument('--batch_size', type=int, default=32, help='batch size')
-    parser.add_argument('--learning_rate', type=float, default=0.0001, help='init learning rate')
-    parser.add_argument('--splitRatio', type=float, default=0.2, help='init learning rate')
+    parser.add_argument('--optimizer', type=str, default='adam', choices=['sgd', 'adam', 'adagrad'], help='choose optimizer: [sgd, adam, adagrad]')
+    
+    parser.add_argument('--seed',help='seed number',type=int,default=0)
+    parser.add_argument('--poolingFlag',default=True,type=str2bool,help="whether add pooling layer at first layer in model architecture or not")
+    parser.add_argument('--ReLUFlag',default=True,type=str2bool,help="determine activation: Yes=> ReLU() , No=>Tanh()")
+    parser.add_argument('--showPosImportance',default=True,type=str2bool,help="if True,will show mz range importance in test data")
+    parser.add_argument('--channels',default=64,type=int,help="channels")
+    parser.add_argument('--cuda', type=int, default=0,help="cuda")
+    parser.add_argument('--learning_rate', type=float, default=0.0001, help='learning rate')
+    parser.add_argument('--epochs', type=int, default=30, help='num of training epochs')
+    parser.add_argument('--splitRatio', type=float, default=0.2, help='In training process,we need to split Training data into training and validation parts by splitRatio to determine parameters')
 
     args = parser.parse_args()
     print(args)
@@ -292,11 +295,12 @@ def main():
 
     print(auc)
 
-    torch.save(model,args.savePath)
+    if args.savePath:
+        torch.save(model,args.savePath)
 
     if args.showPosImportance:
         out_mask=scorecam(model,model.pooling,test_data)
-        np.save('model_avgpool_seed_{}_score_cam.npy'.format(seed_num), out_mask)
+        np.save('model_avgpool_score_cam.npy'.format(seed_num), out_mask)
 
 
     return auc,accuracy,Specificity,Sensitivity
