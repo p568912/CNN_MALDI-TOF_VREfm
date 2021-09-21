@@ -21,6 +21,23 @@ The code will
 
 ## usage
 ```bash
-usage:
+usage: trainBatDropout.py  [-h help] 
+                  
+                  [--trainData TRAINING_DATA] 
+                  [--trainLabel TRAINING_LABEL]
+                  [--testData TESTING_DATA] 
+                  [--testLabel TESTING_LABEL]
+                  
+                  [--savePath SAVEPATH] [--predPath PREDPATH] 
+                  [--batch_size BATCH_SIZE] [--optimizer OPTIMIZER]
+                  [--epochs EPOCHS] [--learning_rate LEARNING_RATE] 
+                  [--momentum MOMENTUM] [--weight_decay WEIGHT_DECAY] 
+                             
+                  [--cuda CUDA]
+                  [--eval EVAL]
+                  [--load MODEL_NAME]
+                  [--save MODEL_NAME ]
+                  
+Required arguments:
 '''
 
