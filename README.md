@@ -23,7 +23,7 @@ python3 trainBatDropout.py --trainData TRAINING_DATA --trainLabel TRAINING_LABEL
 If you set showPosImportance True,the code will give users the m/z position importance in test data.It will be saved at model_avgpool_score_cam.npy .
 
 ```bash
-python3 trainBatDropout.py --trainData TRAINING_DATA --trainLabel TRAINING_LABEL --testData TESTING_DATA --testLabel TESTING_LABEL --showPosImportance True
+python3 trainBatDropout.py --showPosImportance True --trainData TRAINING_DATA --trainLabel TRAINING_LABEL --testData TESTING_DATA --testLabel TESTING_LABEL
 ```
 
 ## usage
