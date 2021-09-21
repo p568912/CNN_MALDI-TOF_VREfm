@@ -15,15 +15,15 @@ python3 preprocess.py --input INPUT
 In this section, we will train the model from our code using preprocessed input in previous step. Users can modify parameters to change the architeture of network based on demands. (ex:poolingFlag,ReLUFlag,channels,batch_size, etc.)
 
 ```bash
-python3 preprocess.py --input INPUT
+python3 trainBatDropout.py --trainData TRAINING_DATA --trainLabel TRAINING_LABEL --testData TESTING_DATA --testLabel TESTING_LABEL
 ```
 
 
 ### model interpretation: (scorecam.py)
-The code will give users the m/z position importance in test data.It will be saved at model_avgpool_score_cam.npy .
+If you set showPosImportance True,the code will give users the m/z position importance in test data.It will be saved at model_avgpool_score_cam.npy .
 
 ```bash
-python3 preprocess.py --input INPUT
+python3 trainBatDropout.py --trainData TRAINING_DATA --trainLabel TRAINING_LABEL --testData TESTING_DATA --testLabel TESTING_LABEL --showPosImportance True
 ```
 
 ## usage
