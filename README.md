@@ -44,13 +44,13 @@ usage: trainBatDropout.py  [-h help]
                   
 Required arguments:
   --trainData
-        training Data path [Type: String]  
+              training Data path [Type: String]  
   --trainLabel
-        training label path [Type: String]
+              training label path [Type: String]
   --testData
-        testing Data path [Type: String]  
+              testing Data path [Type: String]  
   --trainLabel
-        testing label path [Type: String]  
+              testing label path [Type: String]  
 Optional arguments:
   -h, --help            
                         Show this help message and exit
