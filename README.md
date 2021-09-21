@@ -5,9 +5,10 @@ In this project, we develop the deep learning algorithm to classify bacteria wit
 We divde into three sections: preprocessing, training ,model interpretation.
 
 ### preprocessing: (preprocess.py)
-MS data is processed and it will be transformed as deep learning model input after preprocessing.
+MS data is processed and it will be transformed as deep learning model inputs after preprocessing. You can set m/z range based on the range of m/z data.
+After preprocessing, you will get feature data (called INPUT_mz_dim.npy )and label data (called INPUT_labels.csv).
 ```bash
-python3 preprocess.py --input INPUT
+python3 preprocess.py --input INPUT --maxMZ MAXMZ --minMZ MINMZ
 ```
 
 
