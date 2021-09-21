@@ -22,7 +22,6 @@ The code will
 ## usage
 ```bash
 usage: trainBatDropout.py  [-h help] 
-                  
                   [--trainData TRAINING_DATA] 
                   [--trainLabel TRAINING_LABEL]
                   [--testData TESTING_DATA] 
