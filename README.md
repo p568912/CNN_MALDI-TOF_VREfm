@@ -43,7 +43,16 @@ usage: trainBatDropout.py  [-h help]
                   [--splitRatio SPLIT_RATIO]
                   
 Required arguments:
---trainData
-        training File path Type: String]  
+  --trainData
+        training Data path [Type: String]  
+  --trainLabel
+        training label path [Type: String]
+  --testData
+        testing Data path [Type: String]  
+  --trainLabel
+        testing label path [Type: String]  
 Optional arguments:
+  -h, --help            
+                        Show this help message and exit
+                        
 
