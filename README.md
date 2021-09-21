@@ -2,8 +2,10 @@
 In this project, we develop the deep learning algorithm to classify bacteria with vanocomycin resistance (VREfm) or not according to the MS data. Our performance is superior than previous methods such as tradition machine learning. In addition, our code can tell users which m/z range is more important for any samples. We will give score for each m/z position by normalizing from 0 to 1 in each sample. If the score is greater in the specified m/z position, it will represent the model consider m/z position more important. We hope our algorithm can be applied to resistance classifcation of any kind of bacteria.
 
 ## installation
-Our python enviroment will be >=3.6. Installed Packages are listed in "requirements.txt". You can install pip3 install -r requirements.txt.
-
+Our python enviroment will be >=3.6. Installed Packages are listed in "requirements.txt". You can install relevant package by `
+``bash 
+pip3 install -r requirements.txt.
+```
 ## workflow
 We divde into three sections: preprocessing, training ,model interpretation.
 
