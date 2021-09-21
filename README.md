@@ -11,7 +11,7 @@ python3 preprocess.py --input INPUT
 ```
 
 
-### training: (dataset.py ,trainBatDropout.py )
+### training: (trainBatDropout.py, dataset.py)
 In this section, we will train the model from our code using preprocessed input in previous step. Users can modify parameters to change the architeture of network based on demands. (ex:poolingFlag,ReLUFlag,channels,batch_size, etc.)
 
 ```bash
