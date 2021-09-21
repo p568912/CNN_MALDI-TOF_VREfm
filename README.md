@@ -34,16 +34,16 @@ usage: trainBatDropout.py  [-h help]
                   [--testData TESTING_DATA] 
                   [--testLabel TESTING_LABEL]
                   
-                  [--savePath SAVEPATH] [--predPath PREDPATH] 
+                  [--savePath MODEL_PATH] [--predPath PREDPATH] 
                   [--batch_size BATCH_SIZE] [--optimizer OPTIMIZER]
-                  [--epochs EPOCHS] [--learning_rate LEARNING_RATE] 
-                  [--momentum MOMENTUM] [--weight_decay WEIGHT_DECAY] 
-                             
-                  [--cuda CUDA]
-                  [--eval EVAL]
-                  [--load MODEL_NAME]
-                  [--save MODEL_NAME ]
+                  [--seed SEED] [--poolingFlag POOLINGFLAG]
+                  [--ReLUFlag RELUFLAG] [--showPosImportance SHOWPOSIMPORTANCE]
+                  [--channels CHANNELS] [--cuda CUDA]
+                  [--learning_rate LEARNING_RATE] [--epochs EPOCHS]
+                  [--splitRatio SPLIT_RATIO]
                   
 Required arguments:
-'''
+--trainData
+        training File path Type: String]  
+Optional arguments:
 
