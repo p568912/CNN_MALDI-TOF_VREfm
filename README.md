@@ -1,3 +1,4 @@
+# CNN_MALDI-TOF_VREfm
 ## description
 In this project, we develop the deep learning algorithm to classify bacteria with vanocomycin resistance (VREfm) according to the MS data. Our performance is superior than previous methods such as traditional machine learning. In addition, our code can tell users which m/z range is more important for any samples. We will give score for each m/z position by normalizing from 0 to 1 in each sample. If the score is greater in the specified m/z position, it will represent the model consider m/z position more important. We hope our algorithm can be applied to resistance classifcation of any kind of bacteria.
 
